@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 	console.log(log)
 
 	fs.appendFile('server.log', log + '\n', (err) => {
+		console.log(err);
 		console.log('Unable to append to server.log.')
 	});
 	next();
@@ -46,6 +47,12 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
 	res.render('about.hbs', {
 		pageTitle: 'About Page',
+	});
+});
+
+app.get('/projects', (req, res) => {
+	res.render('projects.hbs', {
+		pageTitle: 'Projects Page',
 	});
 });
 
